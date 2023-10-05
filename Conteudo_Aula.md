@@ -11,3 +11,7 @@ Nesta aula, o instrutor fala sobre a construção de um sistema interno para uma
 ## Aula 01 - Criando o Servidor - Video 3
 Nesta aula, o instrutor ensina como criar um servidor HTTP utilizando Node.js. Ele explica o protocolo HTTP, a criação do servidor com a biblioteca http e como testar o servidor localmente. O processo começa com a criação de um novo projeto Node utilizando o comando npm init -y e adicionando a propriedade type com o valor module no arquivo package.json. Em seguida, o instrutor mostra como importar a biblioteca http e utilizar o método createServer() para criar o servidor. Ele define o cabeçalho da resposta HTTP com o método writeHead() e envia o conteúdo da resposta com o método end(). Por fim, ele utiliza o método listen() para fazer o servidor "ouvir" por conexões na porta especificada.
 
+
+## Aula 01 - Criando rotas - Video 4
+Normalmente usa-se a notação, objeto.propriedade(chave:, ou método) com o PONTO para acessar a propriedade, mas quanto esta propriedade for uma VARIÁVEL deve-se usar objeto[variavelProriedade] a notação com colchetes 
+
