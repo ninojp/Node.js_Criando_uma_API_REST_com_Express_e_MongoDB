@@ -13,5 +13,52 @@ Nesta aula, o instrutor ensina como criar um servidor HTTP utilizando Node.js. E
 
 
 ## Aula 01 - Criando rotas - Video 4
+Nesta aula, o instrutor abordou o conceito de rotas em uma API. Ele explicou que as rotas são endereços que definem os recursos que queremos acessar na API. O instrutor mostrou como criar um conjunto de rotas em um arquivo server.js, utilizando um objeto chamado rotas. Ele exemplificou que ao acessar a rota base, representada por /, será exibida a informação "Curso de Node.js". O instrutor também ensinou como reiniciar o servidor utilizando a biblioteca Nodemon e como visualizar outras rotas adicionando novas chaves e valores ao objeto rotas. Por fim, ele mostrou como criar um arquivo .gitignore para evitar que a pasta "node_modules" seja enviada para o repositório do GitHub.
+
 Normalmente usa-se a notação, objeto.propriedade(chave:, ou método) com o PONTO para acessar a propriedade, mas quanto esta propriedade for uma VARIÁVEL deve-se usar objeto[variavelProriedade] a notação com colchetes 
 
+
+## Aula 01 - Conclusão - Nesta aula, você aprendeu:
+O que são APIs, seus diferentes tipos, para que são utilizadas e como vai funcionar a API no contexto do nosso produto.
+O que são servidores e como criar um servidor local utilizando o módulo http nativo do Node.js.
+Como criar rotas em uma API, como se conectar e acessar rotas e de que forma as rotas são utilizadas dentro da lógica de uma API REST.
+
+
+
+## Aula 02 - Express e primeiras Rotas - Video 1
+Nesta aula, a instrutora aborda o uso do framework Express no desenvolvimento de uma API em Node.js. Ela explica que o Express é um conjunto de bibliotecas que facilitam o trabalho de desenvolvimento, permitindo o gerenciamento de rotas e do servidor HTTP. O instrutor mostra como instalar o Express utilizando o npm e como iniciar o Express em um arquivo chamado "app.js". Ela demonstra como criar a primeira rota utilizando o método app.get(), onde é passada uma string representando a URL base da API e uma função de retorno que recebe os parâmetros de requisição e resposta. O instrutor também mostra como o Express substitui a biblioteca interna do Node.js para lidar com as requisições e respostas HTTP. Ela faz a comunicação entre o módulo app.js e o servidor, exportando o módulo e importando-o no arquivo server.js. O instrutor também mostra como iniciar o servidor utilizando o método app.listen() e como testar a rota no navegador. Ela menciona que as rotas e o objeto rotas criados anteriormente podem ser deletados, pois o Express agora é responsável por gerenciar as rotas da API.
+
+
+## Aula 02 - Criando a rota livros - Video 2
+Nesta aula, o instrutor ensina como criar rotas e retornar dados em uma aplicação Express. Ele cria um array chamado "livros" que simula uma base de dados de livros. Em seguida, adiciona uma rota "/livros" que retorna esse array como resposta. Ele explica o uso dos métodos "get()" e "json()" para obter e enviar dados no formato JSON. O instrutor também menciona que o JSON é o formato padrão para APIs REST e mostra como testar a rota no navegador. Ele destaca que existem outros métodos HTTP para diferentes ações em uma API.
+
+
+## Aula 02 - Criando registros com POST - Video 3
+Nesta aula, o professor ensina como adicionar novos registros à API utilizando o método POST. Ele cria uma nova rota ("/livros") e explica que os dados do novo livro são acessados através da propriedade "body" do objeto de requisição (req.body). É necessário utilizar o middleware "express.json()" para converter o corpo da requisição em um objeto JSON. Após adicionar o novo livro ao array de livros, o professor envia uma resposta de sucesso com o código de status 201 e uma mensagem informando que o livro foi cadastrado com sucesso. Ele também mostra como testar a funcionalidade utilizando o Postman.
+> No projeto foi usado: app.use(express.json());  
+**Middleware**
+Assim, temos aqui uma função executando outra função. Isso se chama middleware.
+No caso do Express, esses middlewares são utilizados para ter acesso às requisições e às respostas no momento em que elas estão sendo feitas, e para fazer algumas ações nelas, como por exemplo, modificar o objeto, passar informações extras etc.
+
+
+## Aula 02 - Buscando e atualizando livros - Video 4
+Nesta aula, o instrutor continua aprimorando a API, adicionando novas funcionalidades básicas. Ele explica como criar uma nova rota para acessar apenas um livro específico, utilizando o método GET. O instrutor também mostra como utilizar o método PUT para alterar o título de um livro existente. Ele ressalta a importância de testar as requisições utilizando o Postman. Com essas funcionalidades implementadas, a API já é capaz de buscar, criar e alterar dados.
+> Importante frizar que o (:id) Com esses dois pontos, foi usado para infor ao Express que o ID será uma informação variável, que será processada de acordo com o valor que for passado.  
+> PUT vs PATCH  
+ - PUT substitui totalmente o recurso atual pelos novos dados que estão sendo recebidos na requisição. Caso não exista o recurso anterior, ele será criado. Apesar disso, não é o método indicado para a criação de novos recursos, para isso existe o método POST.
+ - PATCH atualiza parcialmente um recurso já existente. Ao contrário do PUT que precisa receber um recurso completo para fazer a substituição completa, PATCH pode receber apenas os dados a serem modificados para atualizar apenas estes campos.  
+ Quando utilizar um ou outro?  
+PUT pode ser usado em situações em que há acesso ao recurso completo (por exemplo, todos os campos do documento a ser atualizado) ou a necessidade de substituir totalmente o recurso. É necessário enviar sempre o recurso completo (com todos os campos);  
+PATCH pode ser usado para atualizações parciais e pode receber apenas o campo que será atualizado, o que pode significar menor volume de tráfego de dados.
+
+
+## Aula 02 - Deletando livros - Video 5
+Nesta aula, aprendemos como realizar a exclusão de registros em uma API Rest utilizando o método app.delete do Express. O instrutor mostrou como implementar a função de exclusão, utilizando o método splice para remover o registro do array. Também foi mencionado o uso do Postman para testar a operação de exclusão. Além disso, o instrutor falou sobre as outras operações básicas de um CRUD (Create, Read, Update, Delete) e destacou a importância do CRUD no desenvolvimento back-end.  
+No dia a dia, quando falamos em CRUD normalmente também nos referimos a aplicações, APIs ou serviços responsáveis por estas operações. Além da lógica básica de GET, POST, PUT/PATCH e DELETE, as aplicações normalmente implementam um conjunto de outras funcionalidades necessárias ao CRUD, como métodos de validação, autenticação, paginação, testes, tratamento de erros etc.  
+
+
+## Aula 02 - Conclusão - Nesta aula, você aprendeu:
+Como instalar e utilizar os métodos do framework Express para criação de um servidor HTTP e também para gerenciamento de requisições, respostas e criação de rotas;
+Como implementar um CRUD inicial com os métodos HTTP GET, POST, PUT e DELETE, e como utilizar os métodos do Express para cada método;
+Como testar requisições com Postman e quais são as partes de uma requisição HTTP;
+Como utilizar o Express para gerar e enviar respostas adequadas para cada tipo de requisição HTTP.
