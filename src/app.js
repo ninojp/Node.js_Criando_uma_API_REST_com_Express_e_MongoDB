@@ -14,10 +14,4 @@ conexao.once("open", () => {
 const app = express();
 routes(app);
 
-// Aqui o método DELETE do http, DELETA um obj do array livros
-app.delete("/livros/:id", (req, res) => {
-    const index = buscaLivro(req.params.id);
-    livros.splice(index, 1);
-    res.status(200).send("Livro Deletado com sucesso!");
-})
 export default app;

@@ -112,8 +112,58 @@ Nesta aula, o instrutor continua a refatoração do código, adicionando funcion
 ## Aula 04 - Controller DELETE - Video 4
 Nesta aula, o instrutor finaliza a implementação do CRUD básico em um projeto utilizando Node.js e MongoDB. Ele mostra como criar o método de exclusão de um livro no controller, utilizando o método findByIdAndDelete do Mongoose. O instrutor explica que o método recebe o id do livro a ser excluído como parâmetro e não possui um segundo parâmetro como o método de atualização. Em caso de sucesso na exclusão, a resposta da requisição é um status 200 e a mensagem "Livro excluído com sucesso". Em caso de falha, é retornado um status 500 e a mensagem "Falha na exclusão". O instrutor também mostra como adicionar a rota correspondente no arquivo livrosRoutes.js. Por fim, ele menciona que o CRUD de Livro está completo e que o próximo passo é testar o processo utilizando o Postman. Ele demonstra como testar a rota de listagem de livros, a rota de criação de um novo livro, a rota de atualização de um livro e a rota de exclusão de um livro. Após realizar os testes, o instrutor conclui que o fluxo CRUD está completo e que o projeto poderá ser evoluído com a implementação de erros, autenticação, paginação e outras validações.
 
-
 ## Aula 04 - Conclusão - Nesta aula, você aprendeu:
 A organizar a estrutura do código de um projeto de API utilizando o padrão chamado controller;
 A evoluir as funcionalidades da API organizando as chamadas da lib Mongoose em métodos separados em um controller;
 A praticar a implementação do CRUD (Create, Read, Update e Delete) com as respostas HTTP e as rotas correspondentes.
+
+
+
+## Aula 05 - Adicionando funcionalidades
+
+## Aula 05 - Criando autores - Video 1
+Nesta aula, o instrutor aborda a adição da entidade "autor" ao modelo de livro em uma API REST. Ele explica que no SQL é necessário garantir que as informações de um autor existam apenas uma vez no banco de dados, enquanto no MongoDB a junção de informações é feita através do conceito de "embedding". O instrutor mostra como adicionar a propriedade "autor" ao modelo de livro, criando um novo modelo para o autor. Ele também menciona a importância de criar rotas e controladores para a entidade "autor" na API, sugerindo duplicar o controlador e as rotas do livro e fazer as substituições necessárias para adaptá-los à entidade "autor".
+
+**Existem três tipos de relacionamentos entre dados**. São eles:  
+ - Relacionamento “um para um” (one-to-one ou 1:1), quando um registro está conectado a somente outro registro em outro conjunto de dados. Exemplo: uma pessoa registrada no sistema da nossa livraria tem somente um CPF relacionado a ela.
+ - Relacionamento “um para muitos” (one-to-many ou 1:n), quando um registro pode ser conectado a mais de um registro em outro conjunto de dados. Exemplo: as pessoas cadastradas em nossa livraria podem fornecer mais de um número de telefone celular, porém, cada um destes números de celular pode estar associado a apenas uma pessoa por vez.
+ - Relacionamento “muitos para muitos” (many-to-many ou n:m), quando mais de um registro pode estar relacionado a mais de um registro em outro conjunto. Exemplo: um livro pode ter mais de um autor, ao mesmo tempo que este mesmo autor pode ter escrito vários livros.
+
+> Além disso, existem as duas formas usuais de fazer estes relacionamentos: embedding e referencing.
+
+
+## Aula 05 - Unindo livros e autores - Video 2
+Nesta aula, o instrutor discute as correções necessárias em alguns arquivos do projeto. Primeiramente, é necessário corrigir o arquivo autorController.js, onde é feita a importação do modelo Autor.js. No modelo Autor.js, são exportados dois módulos: autor e autorSchema, então no autorController.js é necessário importar o autor entre chaves. Em seguida, é necessário corrigir as rotas, adicionando a importação das rotas de autores no arquivo index.js.  
+Após as correções, o instrutor explica como fazer a referência à entidade autor no modelo Livro.js. É adicionada a propriedade autor no livroSchema, que fará referência ao esquema de autor criado anteriormente. Para isso, é feita a importação do autorSchema no arquivo Livro.js e adicionada a informação do autorSchema dentro da propriedade autor no livroSchema.  
+Em seguida, o instrutor explica como fazer a API funcionar e trazer as informações juntas. É feita uma requisição POST no Postman para criar um autor e verificar se a inserção de autores pela rota /autores está funcionando. Após a criação do autor, é explicado como criar um livro com um autor. É feita uma nova requisição POST no Postman para criar um livro, informando o ID do autor no corpo da requisição.  
+No arquivo livroController.js, é feita a alteração no método cadastrarLivros() para processar a requisição e passar os dados corretamente para o modelo gravar no banco de dados. É feita a busca do autor pelo ID no banco de dados e, em seguida, é montado o objeto livroCompleto que será enviado para o banco de dados.  
+Por fim, o instrutor realiza testes no Postman para verificar se a criação do livro está funcionando corretamente. É verificado que o livro é criado com sucesso, contendo o título e o autor, que já retorna o nome e a nacionalidade. O instrutor ressalta que essa é a primeira etapa para unir entidades no projeto, e que a partir de agora é possível
+
+### MongoDB
+o MongoDB segue o princípio de “dados que são acessados juntos devem ser armazenados juntos”.  
+Pensando assim, **embedding** significa incorporar dados que são relacionados e inseri-los em um documento. É usado para simplificar as consultas (queries) aos dados e melhorar a performance geral das ferramentas nas consultas.  
+Porém, incorporar dados em um único documento pode criar documentos muito grandes. O tamanho em bytes limite é 16 mb por documento de um objeto BSON.  
+**Referencing - SQL**
+Referencing significa fazer referência a documentos em outra coleção. Nesse caso, os dados são guardados em coleções separadas. A referência é feita através de um campo específico do documento, normalmente o campo id ou equivalente. A agregação de dados via reference visa evitar duplicação de dados (um aspecto muito importante no SQL, também chamada de “normalização de dados”) e também gerenciar o tamanho dos documentos para evitar a criação de documentos muito grandes, que prejudicariam a performance do sistema.
+
+
+## Aula 05 - Buscas por parâmetro - Video 3
+Nesta aula, o professor discute a implementação de uma nova funcionalidade em uma API REST já existente. A funcionalidade em questão é a busca de livros por editora. Ele explica como capturar o parâmetro de consulta na requisição e utilizá-lo para fazer a busca no banco de dados utilizando o Mongoose. O professor também destaca a importância de definir a ordem das rotas no Express corretamente para evitar conflitos. Ele encoraja os alunos a continuarem estudando e adicionando mais funcionalidades ao projeto.
+
+
+### URLs, Uniform Resource Locator ou “localizador uniforme de recursos”
+ - https:// é o protocolo de comunicação utilizado.
+ - cursos.alura.com.br é o host, composto por subdomínio (cursos) e domínio (alura.com.br).
+ - :443/ é a porta utilizada na comunicação. 443 é a porta usada para conexões do tipo HTTPS e o número é normalmente suprimido na visualização padrão do navegador. No caso de conexões HTTP, a porta utilizada é a 80.
+ - search é a rota ou path (“caminho”), assim como nossa API tem as rotas livros e autores. Rotas de APIs, como a que estamos trabalhando, normalmente são “abstrações” referentes aos recursos. Porém, as rotas também podem ser usadas para a localização de recursos no servidor, por exemplo, /pages/sobre.html para exibir a página sobre no navegador.
+ - ?query=express são os query parameters ou parâmetros de busca. Note que os parâmetros de busca sempre iniciam com ?. Uma URL pode conter vários parâmetros encadeados, separados por &. Por exemplo, ?query=express&type=curso&formacao=node.
+
+## Aula 04 - Conclusão - Nesta aula, você aprendeu:
+A evoluir as funcionalidades de uma API, unindo diferentes entidades como livro e autor;
+Como funciona o relacionamento em um banco de objetos como MongoDB utilizando o modelo de embedding;
+Como realizar buscas em API via parâmetros de query.
+
+
+
+## Conclusão do Curso: Node.js Criando uma API REST com Express e MongoDB
+Nesta aula, concluímos o curso de API REST com Node.js, Express e MongoDB. Aprendemos sobre a importância das APIs REST no desenvolvimento web back-end, como criar rotas, lidar com requisições HTTP, utilizar os verbos REST, autenticação e autorização, além de trabalhar com o framework Express e o banco de dados MongoDB. Também foi destacado o uso de atividades extras para aprofundar o conhecimento e a importância de interagir com a comunidade e deixar avaliações sobre o curso. Parabéns por concluir o curso e continue se dedicando aos estudos!
