@@ -62,3 +62,40 @@ Como instalar e utilizar os métodos do framework Express para criação de um s
 Como implementar um CRUD inicial com os métodos HTTP GET, POST, PUT e DELETE, e como utilizar os métodos do Express para cada método;
 Como testar requisições com Postman e quais são as partes de uma requisição HTTP;
 Como utilizar o Express para gerar e enviar respostas adequadas para cada tipo de requisição HTTP.
+
+
+## Aula 03 - Persistindo Dados
+
+## Aula 03 - Bancos de dados - Video 1
+Nesta aula, o instrutor aborda a persistência de dados e os diferentes tipos de bancos de dados: SQL e NoSQL. Ele explica que a persistência de dados refere-se à capacidade de gravar, salvar ou armazenar informações em uma base de dados. O instrutor menciona que inicialmente lidamos com dados principais usando formatos primitivos no JavaScript, mas dependendo do tipo de banco de dados, essa abordagem pode variar.
+Ele introduz os conceitos de bancos de dados SQL(MySQL, PostgreSQL, SQLite, MariaDB) e NoSQL(MongoDB, Cassandra, Redis, Neo4j). Os bancos de dados SQL utilizam tabelas relacionais para estruturar os dados, enquanto os bancos de dados NoSQL não seguem essa estrutura. O MongoDB é um exemplo de banco de dados NoSQL que será utilizado no curso.
+O instrutor destaca que ambos os tipos de bancos de dados têm vantagens e desvantagens, e ao longo do curso serão fornecidas mais informações sobre isso. Por fim, ele menciona que é o momento de criar a primeira instância do MongoDB.
+
+
+## Aula 03 - Criando coleção no MongoDB - Video 2
+Nesta aula, aprendemos a utilizar o serviço do MongoDB chamado Atlas para criar uma instância gratuita do MongoDB na nuvem. Foi explicado passo a passo como criar uma conta, um projeto e um banco de dados no Atlas. Também vimos como conectar o banco à API e adicionar documentos a uma coleção.
+
+
+## Aula 03 - Conectando MongoDB e API - Video 3
+Nesta aula, o instrutor aborda a integração entre um banco de dados MongoDB e uma API. Ele explica como instalar o Mongoose, fazer a conexão com o banco de dados e tratar os eventos de erro e sucesso da conexão. Essa integração é importante para que a API possa realizar operações no banco de dados, como salvar e buscar dados.
+
+
+## Aula 03 - Criando models e schemas - Video 4
+Nesta aula, aprendemos a criar models e schemas para manipular dados em uma API utilizando o Mongoose e o MongoDB. Foi explicado o conceito de Schema, que define a estrutura e as propriedades de um documento, e como definir o tipo de dado e tornar algumas propriedades obrigatórias. Também foi mostrado como criar um modelo, que permite interagir com os documentos do banco de dados, e como usar esse modelo para acessar e trazer registros.
+
+
+## Aula 03 - Acessando a coleção livros - Video 5
+Nesta aula, o instrutor mostra como conectar a rota do aplicativo ao MongoDB em vez de usar um array. Ele utiliza o método "find()" do Mongoose para buscar todos os livros na coleção "livros" e retorna a lista de livros como resposta JSON. O instrutor também aborda a questão de segurança, mostrando como utilizar a biblioteca "dotenv" para proteger informações sensíveis, como senhas e strings de conexão. Agora é possível fazer os outros métodos (GET, POST, PUT e DELETE) funcionarem corretamente com o banco de dados.
+
+## Aula 03 - Conclusão - Nesta aula, você aprendeu:
+Como os bancos de dados atuam integrados a uma API, guardando os dados recebidos e processados pela API;
+Quais são as principais diferenças entre tipos de bancos de dados SQL e NoSQL e alguns casos de uso de cada tipo de banco;
+Como utilizar uma instância gratuita de um banco MongoDB na nuvem através do serviço Mongo Atlas e conectar a instância com a API;
+Os conceitos de model e schema e qual a função de cada na construção de uma API.
+
+
+
+## Aula 04 - Evoluindo a API
+
+## Aula 04 - Criando controller para livro - Video 1
+Nesta aula, o instrutor aborda a necessidade de organizar a estrutura de uma aplicação para que ela possa crescer de forma organizada. Ele propõe a criação de controladores (controllers) para lidar com as requisições e respostas da aplicação. É criada uma pasta chamada "controllers" e dentro dela um arquivo chamado livroController.js, onde é centralizada toda a lógica relacionada às ações que podem ser feitas em um livro. O primeiro método criado nesse arquivo é o ListarLivros, responsável por listar todos os livros. As rotas são separadas do arquivo app.js e colocadas no arquivo livrosRoutes.js, onde é definida a rota /livros e a função LivroController.listarLivros que será executada quando essa rota for chamada. Essa reorganização torna a aplicação mais organizada e facilita a adição de novas rotas e operações no futuro.

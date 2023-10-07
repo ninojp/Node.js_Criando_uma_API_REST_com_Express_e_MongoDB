@@ -1,26 +1,27 @@
 import express from "express";
-import conectaNaDatabase from "./config/dbConnect.js"
-import livro from "./models/Livro.js";
-
-const conexao = await conectaNaDatabase();
-
-conexao.on("error", (erro) => {
-    console.error("Erro de Conexão", erro);
-});
-conexao.once("open", () => {
-    console.log("Conexão com a DB realizada com Sucesso");
-})
-
+// ESTE ERA UM EXEMPLO COM UMA BASE DE DADOS INTERNA APENAS PARA TESTES 
 const app = express();
 app.use(express.json());
 
+const livros = [
+    { id: 1,
+      titulo: "Senhor dos Aneis" },
+    { id: 2,
+      titulo: "O Hobbit"
+    } ];
+// Faz uma busca no array, pelo ID recebido como parametro e retorna o objeto respectivo ao ID
+function buscaLivro(id){
+    return livros.findIndex(livro => {
+        return livro.id === Number(id);
+    });
+};
+// Cria a rota "root", padrão do projeto 
 app.get("/", (req, res) => {
-    res.status(200).send("Curso de Node.js");
+    res.status(200).send("Curso de Node.js, app express");
 });
-
-app.get("/livros", async (req, res) => {
-    const listaLivros = await livro.find({});
-    res.status(200).json(listaLivros);
+// Cria a rota para exibir o array(lista de objetos livros)
+app.get("/livros", (req, res) => {
+    res.status(200).json(livros);
 });
 // Aqui o (:id) foi usado para indicar ao express que apartir do : vem um parametro variável
 app.get("/livros/:id", (req, res) =>{
