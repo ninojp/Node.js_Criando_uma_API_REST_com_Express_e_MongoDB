@@ -99,3 +99,21 @@ Os conceitos de model e schema e qual a função de cada na construção de uma 
 
 ## Aula 04 - Criando controller para livro - Video 1
 Nesta aula, o instrutor aborda a necessidade de organizar a estrutura de uma aplicação para que ela possa crescer de forma organizada. Ele propõe a criação de controladores (controllers) para lidar com as requisições e respostas da aplicação. É criada uma pasta chamada "controllers" e dentro dela um arquivo chamado livroController.js, onde é centralizada toda a lógica relacionada às ações que podem ser feitas em um livro. O primeiro método criado nesse arquivo é o ListarLivros, responsável por listar todos os livros. As rotas são separadas do arquivo app.js e colocadas no arquivo livrosRoutes.js, onde é definida a rota /livros e a função LivroController.listarLivros que será executada quando essa rota for chamada. Essa reorganização torna a aplicação mais organizada e facilita a adição de novas rotas e operações no futuro.
+
+
+## Aula 04 - Controller POST - Video 2
+Nesta aula, o instrutor continua aprimorando o controlador LivroController e criando mais métodos para lidar com as rotas e as requisições e respostas do Express. O foco é no método cadastrarLivro, que é responsável por cadastrar um livro no banco de dados. O instrutor mostra como utilizar o Mongoose para realizar o processo de criação do registro no banco, utilizando o método create(). Ele também demonstra como tratar erros utilizando o bloco try/catch e retorna respostas adequadas para sucesso e falha no cadastro. Além disso, o instrutor faz uma pequena refatoração nas rotas, criando um arquivo index.js como ponto de entrada para todas as rotas da aplicação. Ele explica como utilizar o método app.route() para agrupar as rotas e como utilizar o app.use() para incluir os middlewares e as rotas no ponto de entrada. Por fim, o instrutor mostra como iniciar as rotas no arquivo app.js e testa a funcionalidade no Postman.
+
+
+## Aula 04 - Controller PUT - Video 3
+Nesta aula, o instrutor continua a refatoração do código, adicionando funcionalidades para pegar um livro, atualizar um livro e deletar um livro. Primeiramente, é feita uma pequena refatoração no método de listar livros, adicionando um bloco try-catch para lidar com possíveis erros. Em seguida, é criado um método para listar um único livro, utilizando o método findById() do Mongoose para buscar o livro pelo ID. Depois, é mostrado como atualizar um livro, utilizando o método findByIdAndUpdate() do Mongoose e passando o ID do livro e os novos dados do livro através do req.body. Por fim, é mencionado que as rotas devem ser atualizadas no arquivo livrosRoutes.js para refletir as novas funcionalidades.
+
+
+## Aula 04 - Controller DELETE - Video 4
+Nesta aula, o instrutor finaliza a implementação do CRUD básico em um projeto utilizando Node.js e MongoDB. Ele mostra como criar o método de exclusão de um livro no controller, utilizando o método findByIdAndDelete do Mongoose. O instrutor explica que o método recebe o id do livro a ser excluído como parâmetro e não possui um segundo parâmetro como o método de atualização. Em caso de sucesso na exclusão, a resposta da requisição é um status 200 e a mensagem "Livro excluído com sucesso". Em caso de falha, é retornado um status 500 e a mensagem "Falha na exclusão". O instrutor também mostra como adicionar a rota correspondente no arquivo livrosRoutes.js. Por fim, ele menciona que o CRUD de Livro está completo e que o próximo passo é testar o processo utilizando o Postman. Ele demonstra como testar a rota de listagem de livros, a rota de criação de um novo livro, a rota de atualização de um livro e a rota de exclusão de um livro. Após realizar os testes, o instrutor conclui que o fluxo CRUD está completo e que o projeto poderá ser evoluído com a implementação de erros, autenticação, paginação e outras validações.
+
+
+## Aula 04 - Conclusão - Nesta aula, você aprendeu:
+A organizar a estrutura do código de um projeto de API utilizando o padrão chamado controller;
+A evoluir as funcionalidades da API organizando as chamadas da lib Mongoose em métodos separados em um controller;
+A praticar a implementação do CRUD (Create, Read, Update e Delete) com as respostas HTTP e as rotas correspondentes.
